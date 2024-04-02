@@ -1,0 +1,22 @@
+server:
+  port: 9094
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: Application1
+          uri: lb://Application1
+          predicates:
+            - Path= /controller1/**
+        - id: Application2
+          uri: lb://Application2
+          predicates:
+            - Path= /controller2/**
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:9093/eureka/
