@@ -1,5 +1,6 @@
 package com.example.application1.controller;
 
+import com.example.application1.service.ServiceClass;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,12 +12,11 @@ import org.springframework.web.client.RestTemplate;
 public class ControllerClass {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private ServiceClass serviceClass;
 
     @RequestMapping("/cntMethod1")
     public String test(){
-        ResponseEntity<String> response =  restTemplate.getForEntity("http://APPLICATION2/controller2/cntMethod2",String.class);
-        return response.getBody();
+        return serviceClass.testService();
     }
 
 }
