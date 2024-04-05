@@ -1,0 +1,18 @@
+server:
+  port: 9096
+
+spring:
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    template:
+      default-topic: app1_to_app2
+    consumer:
+      group-id: grp_1
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:9093/eureka/

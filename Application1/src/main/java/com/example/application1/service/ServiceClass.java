@@ -6,6 +6,7 @@ import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,6 +16,8 @@ public class ServiceClass {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private KafkaTemplate kafkaTemplate;
 
     @CircuitBreaker(name="LearnCB",fallbackMethod = "testServiceFallback")
     @Retry(name = "LearnCB")
@@ -22,6 +25,10 @@ public class ServiceClass {
     public String testService(){
         System.out.println("Inside testService");
         String response =  restTemplate.getForObject("http://APPLICATION2/controller2/cntMethod2",String.class);
+
+        //Return that Communication done.
+        kafkaTemplate.send("app1_to_app2","Communication done from app1 to app2");
+        System.out.println("Kafka sent message");
         return response;
     }
 

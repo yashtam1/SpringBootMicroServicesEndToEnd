@@ -34,4 +34,14 @@ resilience4j:
         permittedNumberOfCallsInHalfOpenState: 3
         slidingWindowSize: 10
         slidingWindowType: COUNT_BASED
+  retry:
+    instances:
+      LearnCB:
+        maxAttempts: 10
 
+spring:
+  kafka:
+    bootstrap-servers:
+      - localhost:9092
+    template:
+      default-topic: app1_to_app2

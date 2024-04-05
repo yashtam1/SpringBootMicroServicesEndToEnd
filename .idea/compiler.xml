@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SeviceRegistry" />
+        <module name="NotificationService" />
         <module name="Application2" />
         <module name="Application1" />
         <module name="ApiGateway" />
@@ -19,6 +20,7 @@
       <module name="ApiGateway" options="-parameters" />
       <module name="Application1" options="-parameters" />
       <module name="Application2" options="-parameters" />
+      <module name="NotificationService" options="-parameters" />
       <module name="SeviceRegistry" options="-parameters" />
     </option>
   </component>
